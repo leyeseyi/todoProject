@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in</title>
+    <link href="css/bootstrap2.css" type="text/css" rel="stylesheet"/>
+    <link href="css/todostyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/fontawesome-all.min2.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+        <div class="container-fluid mt-5 col-md-6 col-sm-12 mx-auto"><!--CONTACT WRAPPER-->
+
+            	           <!--NAVBAR LOGO-->
+								<div class="col-md-12 text-center effect">
+										<h1><span class="fa fa-trash"></span>Planner</h1>
+											<b>prioritize your tasks</b>
+								</div>
+							<!--NAVNAR LOGO ENDS-->
+            <div class="jumbotron col-md-12 col-sm-12 mx-auto" id="login"><!--CONTACT FORM-->
+                <h3 class="text-center">Log In</h3>
+                <h4 th:if="${userAdded}==true" class="alert alert-success"><br/> User Added </h4>
+                
+                <div th:if="${param.error}" class="alert alert-error">
+                    Invalid username and password.
+                    <p th:text="${param.error}"> </p>
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success">
+                    You have been logged out.
+                    
+                </div>
+                <form th:action="@{/login}" action="/login" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-12 col-sm-12">
+                            <input type="text" class="form-control" id="username" name ="username" placeholder="Username or email">
+                         </div>
+                        <div class="form-group col-md-12 col-sm-12">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="text-center mx-auto col-md-12 col-sm-12">
+                            <button class="btn btn-primary col-md-6" type="submit"><i class="fa fa-sign-in-alt"></i>Log In</button>
+                                <a th:href="@{/register}" class="btn btn-danger col-md-6"><i class="fa fa-user"></i>Register</a>
+                        </div>
+                    </div>
+                </form>
+        </div> <!--CONTACT FORM ENDS HERE-->
+
+        <!--- footer -->
+				<footer class="text-center mx-auto topAlign2">
+                        <i>created and designed by snowcoder</i><br>
+                        <i>Edited By Leyeseyi</i>
+                    </footer>
+                    <!--- end of footer -->
+        </div>
+
+        <script src="js/jquery2.js"> </script>
+        <script src="js/bootstrap.bundle.js"> </script>
+</body>
+</html>

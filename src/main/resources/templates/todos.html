@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- include title -->
+    <title> Todos </title>
+
+     <!-- include css-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <link href="css/todostyle.css" type="text/css" rel="stylesheet"/>
+
+</head>
+    <body>
+		<div class="container-fluid col-md-12 row">
+
+				<!--- left panel -->
+				<div class="col-md-3 leftPanel length highlight"> 
+				
+					<span class="effect">
+
+						<div class="col-md-12 topAlign text-center white">
+							<h1><span class="glyphicon glyphicon-trash"></span>Planner</h1>
+							<b>prioritize your tasks</b>
+						</div>
+					
+					</span>
+				
+				</div>
+				<!---end of left panel -->
+	
+				<!--- right panel -->
+				<div class="col-md-9 topAlign1">
+                                                    <div>
+                                                    <img style="width:100px" class="img-responsive img-thumbnail img-circle userImage col-md-3 pull-right" th:src="@{'/images/'+${profileImage.profileImage}}">
+                                                    <a href="/logout" th:href="@{/logout}" type="submit" class="btn btn-danger"> Logout </a>
+                                                    </div>
+						<h1 id="outlook"><b> Create todo list </b></h1>
+                                                
+						<hr>
+						
+				<span id="error"> </span>           
+					<form class="well well-sm shade" method='post' th:action="@{/create}" th:object="${entryList}">
+
+							<div class="row">
+								<div class="form-group col-md-10">
+									<input type="text" th:field="*{item}" placeholder="create new todo" class="form-control" required />
+                                                                         <span th:if="${#fields.hasErrors('item')}" th:errors="*{item}" class=" alert-danger"> </span>
+								</div>
+
+								<div class="form-group col-md-2">
+                                                                    <a ><input type="submit" class="btn btn-success" id="add" value="add to list" /> </a>
+								</div>
+                                                          
+                            </div> 
+                            
+						</form>
+                                
+                             <!--    <span th:if="${check} == true" class=" alert-success" style="padding:5px">Todo has been added successfully </span> -->
+						<hr> 
+						
+						<!--- display panel -->
+						<div class="row">
+							<div class="col-md-12">
+                                                            <p class="text-center" th:if="${emptyList}==true">
+                                                                Your todo list is empty... Add some Todos... 
+                                                            </p>
+                                                            
+                                                            
+								<table th:if="${listNotEmpty}==true" class="table table-hover" id="todostable">
+									<thead>
+										<tr>
+											<th>No.</th>
+											<th>Item</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody id="body">
+											<tr th:each = "todo, iterStat:${list}">
+												<td  th:text="${iterStat.count}">    </td>
+												<td  th:text="${todo.item}">  </td>
+                                                <td>
+													<a href="/delete/1" th:href="@{/delete__${todo.id}__}" class="btn btn-danger bn-sm"><span class="glyphicon glyphicon-trash"> </span> delete </a>
+													 
+														<a href="/edit/1" th:href="@{/edit__${todo.id}__}" class="btn btn-primary bn-sm"><span class="glyphicon glyphicon-pencil"> </span> edit </a>
+														
+														<a th:if="${todo.completed}==0" th:href="@{/completed__${todo.id}__}" class="btn btn-primary bn-sm"><span class="glyphicon glyphicon-user"> </span> uncompleted </a> 
+														<a th:if="${todo.completed}==1" th:href="@{/completed__${todo.id}__}" class="btn btn-success bn-sm"><span class="glyphicon glyphicon-ok"> </span> completed </a> 
+											
+														<!-- <a href="" class="btn btn-warning bn-sm"><span class="glyphicon glyphicon-ok"> </span> mark as completed </a> -->
+															
+                                                </td>
+                                            </tr>
+											
+                                           
+									</tbody>
+								</table>
+							</div>
+                                                    <div class="col-md-6">
+                                                    <table class="col-md-offset-6 table table-hover bg_table ">
+                                                            <thead>
+                                                                <tr style="background: lightseagreen; color: whitesmoke" class="panel panel-info" >
+                                                                    <th> Completed : <span th:text="${completedCount}">  </span> </th>
+                                                                    <th> Uncompleted : <span th:text="${uncompletedCount}">  </span></th>
+                                                                    <th> Total = <span th:text="${count}">  </span></th>
+
+                                                                </tr>
+                                                            </thead>
+
+                                                        </table>
+                                                        </div>
+						</div> 
+
+                </div>
+
+				<!--- footer -->
+				<div class="text-center col-md-9 topAlign2">
+					<i>created and designed by snowcoder</i>
+				</div>
+				<!--- end of footer -->
+        </div> 
+
+         <script src="js/jquery.js"> </script>
+	
+    </body>
+</html>		

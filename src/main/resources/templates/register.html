@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>register</title>
+
+    <link href="css/bootstrap2.css" type="text/css" rel="stylesheet"/>
+    <link href="css/todostyle.css" type="text/css" rel="stylesheet"/>
+    <link href="css/fontawesome-all.min2.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+        <div class="container-fluid col-md-6 mx-auto mt-5"><!--CONTAINER-->
+
+                <!--NAVBAR LOGO-->
+								<div class="col-md-12 text-center effect">
+										<h1><span class="fa fa-trash"></span>Planner</h1>
+											<b>prioritize your tasks</b>
+								</div>
+                            <!--NAVNAR LOGO ENDS-->
+                            
+
+                            <form method="post" action="/registerUser" th:action="@{/registerUser}" th:object="${user}" enctype="multipart/form-data">
+                                <div class="jumbotron">
+                                        <div class="form-group row">
+                                                <label class="col-md-12 col-sm-12 col-form-label pl-0" for="fname"><span class="label col-md-12 col-sm-12 text-center">First Name:</span></label>
+                                                    <div class="col-md-12 col-sm-10 align-items-start">
+                                                            <input type="text" th:field="*{firstname}" class="form-control"/>
+                                                            <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class=" alert-danger"> </span>
+                                                    </div>
+                                        </div>
+                                    
+                                    <div class="form-group row">
+                                            <label class="col-md-12 col-sm-12 col-form-label pl-0" for="lname"><span class="label col-md-12 col-sm-12 text-center">Last Name:</span></label>
+                                            <div class="col-md-12 col-sm-10  align-items-start">
+                                                    <input type="text" th:field="*{lastname}"  class="form-control"/>
+                                                    <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class=" alert-danger"> </span>
+                                            </div>
+                                    </div>
+                                        
+                            
+                                    <div class="form-group row">
+                                        <label class="col-md-12 col-sm-12 col-form-label pl-0" for="email"><span class="label col-md-12 col-sm-12 text-center">Email:</span></label>
+                                        <div class="col-md-12 col-sm-10  align-items-start">
+                                            <input type="text" class="form-control" th:field="*{email}" />
+                                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class=" alert-danger">invalid email  </span>
+                                            <p th:if="${mailerror}==true" class="alert alert-danger"> email already exist</p>
+                                        </div>
+                                    </div>
+            
+            
+                                            <div class="form-group row">
+                                                    <label class="col-md-12 col-sm-12 col-form-label pl-0" for="phone"><span class="label col-md-12 col-sm-12 text-center">Phone Number:</span></label>									
+                                                    <div class="col-md-12 col-sm-10  align-items-start">
+                                                            <input type="text" th:field="*{phoneNumber}" class="form-control"/>
+                                                            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class=" alert-danger"> </span>
+                                                    </div>
+                                            </div>
+
+                                           <div class="form-group row">
+                                                    <label class="col-md-12 col-sm-1 col-form-label pl-0" for="cdate"><span class="label col-md-12 col-sm-12 text-center">Date of Birth:</span></label>
+                                                    <div class="col-md-12 col-sm-10 align-items-start">
+                                                        <input type="text" name="dateOfBirth" class="form-control"/>
+                                                    <!--    <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class=" alert-danger"></span>   -->
+                                                    </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-md-12 col-sm-1 col-form-label pl-0" for="cdate"><span class="label col-md-12 col-sm-12 text-center">Profile Image:</span></label>
+                                                <div class="col-md-12 col-sm-10 align-items-start">
+                                                    <input type="file"  class="form-control" name="profileimage"/>
+                                                </div>
+                                        </div>
+                                        
+                
+                
+                                <div class="form-group row">
+                                    <label class="col-md-12 col-sm-12 col-form-label pl-0" for="password"><span class="label col-md-12 col-sm-12 text-center">Password:</span></label>
+                                    <div class="col-md-12 col-sm-10  align-items-start">
+                                        <input type="password"  class="form-control" th:field="*{password}" />
+                                        <p th:if="${passwordMismatch}==true" class="alert alert-danger"> Ensure password matches</p>
+                                    </div>	
+                                </div>	
+                        
+            
+                                <div class="form-group row">
+                                        <label class="col-md-12 col-sm-12 col-form-label pl-0" for="confirm_password"><span class="label col-md-12 col-sm-12 ">Confirm Password:</span></label>
+                                    <div class="col-md-12 col-sm-10  align-items-start">
+                                        <input type="password" class="form-control" name="cpassword"/>
+                                       
+                                       
+                                    </div>			
+                                </div>	
+            
+            
+                                </div>
+                                <div class="text-center button">
+                                        <button class="btn btn-primary"><span class="next">Submit</button>  
+                                </div>
+    
+            
+            
+                        </form>
+                        
+
+
+
+
+            <!--- footer -->
+				<footer class="text-center mx-auto topAlign2">
+                        <i>created and designed by snowcoder</i><br>
+                        <i>Edited By KrissSaviour</i>
+                    </footer>
+                    <!--- end of footer -->
+        </div>
+
+
+        <script src="js/jquery2.js"> </script>
+        <script src="js/bootstrap.bundle2.js"> </script>
+</body>
+</html>

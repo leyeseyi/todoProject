@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- include title -->
+    <title> edit todos </title>
+
+     <!-- include css-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <link href="css/todostyle.css" type="text/css" rel="stylesheet"/>
+
+</head>
+    <body>
+
+<div class="container-fluid col-md-12 row">
+
+        <!--- left panel -->
+        <div class="col-md-3 leftPanel length highlight"> 
+        
+            <span class="effect">
+
+                <div class="col-md-12 topAlign text-center white">
+                    <h1><span class="glyphicon glyphicon-trash"></span>Planner</h1>
+                    <b>prioritize your tasks</b>
+                </div>
+            
+            </span>
+        
+        </div>
+        <!---end of left panel -->
+ 
+        <!--- right panel -->
+        <div class="col-md-9 topAlign1">
+
+            <h1 id="outlook"><b> <span th:text="${message}"> </span> </b></h1>
+                <hr>
+            <span th:if="${check} == true" class=" alert-success" style="padding:5px">Record updated successfully </span>
+        <form class="well well-sm shade" method="post" th:action="@{/create}" th:object="${entryList}">    
+               <div class="row">
+                    <div class="col-md-10 form-group">
+                    <input type="text" th:field="*{item}" class="form-control"  name="_todo" />
+                     <input type="hidden" th:field="*{id}" placeholder="id" class="form-control margin_up"  /> 
+                    </div>
+
+					<div class="col-md-2 form-group">
+						  <input type="submit" class="btn btn-success btn-sm" value="update todo" />
+					</div>
+                </div> 
+         </form>
+                <hr> 
+                
+                <!--- display panel -->
+ 
+
+        </div>
+        <!--- end of right panel -->
+
+        <!--- footer -->
+        <div class="text-center col-md-9 topAlign2">
+            <i>created and designed by snowcoder</i>
+        </div>
+        <!--- end of footer -->
+        
+</div>
+
+         <script src="js/jquery.js"> </script>
+    </body>
+</html>

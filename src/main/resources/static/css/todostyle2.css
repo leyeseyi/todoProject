@@ -1,0 +1,77 @@
+body{
+	font-family: georgia;
+}
+
+.leftPanel {
+	background-color: #3593b0 !important;
+	background-image: url(../images/bg-01.jpg);
+}
+
+#outlook{
+	font-family: Courier New; 
+}
+
+th{
+	font-family: Courier New; 
+}
+
+.length{
+height: 650px;
+}
+
+.topAlign2{
+	padding-top: 70px;
+}
+
+
+.padding_right{
+	margin-right: 25px;
+}
+
+.topAlign{
+	padding-top: 150px;
+}
+
+.topAlign1{
+	padding-top: 40px;
+}
+
+.paddingTop{
+	padding-top: 15px;
+}
+
+.shade{
+	background-color: #977163;
+}
+
+.btn-success{
+	background-color: #6585bf !important;
+	border-color: #6585bf !important;
+}
+
+.btn-success:hover{
+	background-color: #19489e !important;
+	border-color: #19489e !important;
+}
+
+.effect{
+	color : red;
+	opacity : 0.5;
+}
+
+img.userImage{
+    height:150px;
+    width:350px;
+    position:relative;
+    display:none !important;
+}
+/*NAV BAR*/
+#tabs li{
+	padding-bottom: 20px;  
+}
+
+#tabs li a:hover{
+	background-color: darkcyan;
+	border: none;
+
+}
